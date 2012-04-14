@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Kuapay SDK POS test!</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="VirtualPOS.js" type="text/javascript"></script>
+    <script src="jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+    function makePurchase() {
+      var qrcode  = $('#qrcode').val();
+      var vp      = new VirtualPOS();
+      vp.proxyUrl = "/virtualpos/virtualpos.php";
+
+      console.log('Purchase happening for ' + qrcode);
+      vp.startPurchase({}, qrcode);
+    }
+
+    </script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="rounded-box">
+        <h1>Kuapay SDK POS test!</h1>
+        <br />
+        <label for="qrcode"><span>Insert QR code here:</span>
+          <input type="text" name="qrcode" id="qrcode" />
+        </label>
+        <br />
+        <br />
+        <input type="button" value="Make Purchase" onclick="makePurchase()"/>
+        <br />
+        <br />
+        <div id="status"></div>
+        <br />
+      </div>
+    </div>
+  </body>
+</html>
