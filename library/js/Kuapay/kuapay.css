@@ -1,0 +1,104 @@
+#kuapayContainer {
+  width: 510px;
+  margin: 30px auto;
+  font-size: 14px;
+}
+
+#kuapayContainer .image {
+    float: left;
+    width: 147px;
+    height: 121px;
+    background-image: url(kuapay-checkout.png);
+}
+
+#kuapayContainer .main {
+    margin-left: 160px;
+}
+
+#kuapayContainer .qrbox {
+  border: 1px solid #b7b7b7;
+  background-color: #fff;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#kuapayContainer .qrbox .text {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border-width: 0px;
+  width: 100%;
+  text-align: center;
+  color: #666;
+  height: 31px;
+  line-height: 31px;
+  font-size: 14px;
+}
+
+#kuapayContainer .kuapayprogress {
+  border: 1px solid #b7b7b7;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 31px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-align: center;
+  color: #666;
+  position: relative;
+}
+
+#kuapayContainer .kuapayprogressbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-top: 1px solid #33d65c;
+  height: 30px;
+  background-color: #00cc33;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-botom-left-radius: 5px;
+}
+
+#kuapayContainer .kuapayprogressvalue {
+    line-height: 31px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+#kuapayContainer .kuapaypayment {
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  /*
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  */
+  margin: 0px 0px 12px 0px;
+  padding: 20px 30px;
+  text-align: center;
+}
+
+#kuapayContainer .kuapaystatus {
+  border: 1px solid #820000;
+  background-color: #d64c4c;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  padding: 12px;
+  display: none;
+  /*
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  */
+}
