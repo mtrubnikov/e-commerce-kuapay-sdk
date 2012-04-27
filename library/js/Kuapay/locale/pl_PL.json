@@ -1,0 +1,8 @@
+{
+    "default_qr_code":"Wprowadź kod Kuapay.",
+    "status_n1_msg":"Wysłanie rachunu nie powiodło się. Sprawdź poprawność kodu Kuapay, połączenie z siecią i spróbuj ponownie.",
+    "status_n2_msg":"Ten sklep nie ma poprawnie skonfigurowanych płatności Kuapay. Skontaktuj się z przedstawicielem sklepu.",
+    "status_n3_msg":"Transakcja anulowana.",
+    "invalid_qr_code":"Wprowadź poprawny kod Kuapay.",
+    "connection_error":"Błąd połączenia."
+}

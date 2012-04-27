@@ -1,0 +1,46 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Checkout</title>
+  <style type="text/css">
+    .right { float: right; }
+    .buttons, header { width: 510px; margin: 0 auto; }
+    .button { border: 1px solid #ccc; padding: 0.5em; background-color: #f0f0f0; color: #666; }
+    .button span { font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+  </header>
+  <div role="main">
+	<div id="kuapayContainer">
+	</div>
+	<div class="buttons">
+	  <div class="right"><a id="button-confirm" class="button"><span>Confirm payment</span></a></div>
+	</div>
+	<link href="../library/js/Kuapay/kuapay.css" rel="stylesheet" type="text/css">
+	<script type="text/Javascript" src="../library/js/jQuery/jquery-1.7.1.min.js"></script>
+	<script type="text/Javascript" src="../library/js/Kuapay/kuapay.js"></script>
+	<script type="text/Javascript">
+	try {
+		var kuapay = new KuapayPOS({
+		    container: "#kuapayContainer",
+		    submit_button: '#button-confirm',
+		    url_bill: 'bill.php',
+		    url_status: 'status.php',
+		    url_success: 'success.html',
+		    url_locale: '../library/js/Kuapay/locale',
+		    locale: 'pl_PL'
+		});
+		kuapay.init();
+	} catch (e) {
+		alert('Could not initialize Kuapay payments');
+	}
+	</script>
+  </div>
+  <footer>
+
+  </footer>
+</body>
+</html>

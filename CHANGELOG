@@ -1,0 +1,10 @@
+Version 1.1.0
+
+* Adds support for locale. Supported locale: English, Spanish, Polish, Farsi, Hindi
+* API Client returns error status codes instead of throwing exceptions
+* UI code refactorring and cleanup
+
+Version 1.0.0
+
+* First version. Provides minimal set of features needed to integrate Kuapay with
+e-commerce sites.
