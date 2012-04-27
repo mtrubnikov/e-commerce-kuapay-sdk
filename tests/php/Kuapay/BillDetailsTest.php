@@ -71,17 +71,17 @@ class Kuapay_BillDetailsTest extends PHPUnit_Framework_TestCase {
 
         $expectedArray = array(
             0 => array(
-    			'productId' => 1,
-    			'item' => 'a',
-    			'amount' => 2,
-    			'price' => 3.45,
+                'productId' => 1,
+                'item' => 'a',
+                'amount' => 2,
+                'price' => 3.45,
             ),
             1 => array (
-            	'productId' => 6,
-    			'item' => 'b',
-    			'amount' => 7,
-   				'price' => 8.09,
-   			),
+                'productId' => 6,
+                'item' => 'b',
+                'amount' => 7,
+                'price' => 8.09,
+            )
         );
         $this->assertEquals($expectedArray, $array);
     }

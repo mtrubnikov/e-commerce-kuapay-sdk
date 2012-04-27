@@ -78,10 +78,10 @@ class Kuapay_BillDetail {
         }
 
         return array(
-			"productId" => $this->getId(),
-			"item"      => htmlspecialchars($this->getName()),
-			"amount"    => $this->getQuantity(),
-			"price"     => $this->getPrice()
+            "productId" => $this->getId(),
+            "item"      => htmlspecialchars($this->getName()),
+            "amount"    => $this->getQuantity(),
+            "price"     => $this->getPrice()
         );
     }
 }

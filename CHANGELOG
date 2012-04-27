@@ -1,8 +1,9 @@
 Version 1.1.0
 
-* Adds support for locale. Supported locale: English, Spanish, Polish, Farsi, Hindi
+* Adds support for locale. Supported locale: English, Spanish, Polish
 * API Client returns error status codes instead of throwing exceptions
 * UI code refactorring and cleanup
+* example integration works out of the box
 
 Version 1.0.0
 

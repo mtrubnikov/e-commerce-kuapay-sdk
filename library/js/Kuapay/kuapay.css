@@ -5,14 +5,14 @@
 }
 
 #kuapayContainer .image {
-    float: left;
-    width: 147px;
-    height: 121px;
-    background-image: url(kuapay-checkout.png);
+  float: left;
+  width: 147px;
+  height: 121px;
+  background-image: url(kuapay-checkout.png);
 }
 
 #kuapayContainer .main {
-    margin-left: 160px;
+  margin-left: 160px;
 }
 
 #kuapayContainer .qrbox {
@@ -69,20 +69,15 @@
 }
 
 #kuapayContainer .kuapayprogressvalue {
-    line-height: 31px;
-    width: 100%;
-    text-align: center;
-    position: relative;
+  line-height: 31px;
+  width: 100%;
+  text-align: center;
+  position: relative;
 }
 
 #kuapayContainer .kuapaypayment {
   border: 1px solid #ccc;
   background: #f0f0f0;
-  /*
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  */
   margin: 0px 0px 12px 0px;
   padding: 20px 30px;
   text-align: center;
@@ -96,9 +91,4 @@
   color: #fff;
   padding: 12px;
   display: none;
-  /*
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  */
 }

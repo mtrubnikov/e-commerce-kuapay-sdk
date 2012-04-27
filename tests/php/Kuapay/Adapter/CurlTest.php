@@ -81,6 +81,7 @@ class Kuapay_Adapter_CurlTest extends PHPUnit_Framework_TestCase {
                  $this->equalTo(Kuapay_Adapter_Curl::POST),
                  $this->equalTo($purchaseData))
              ->will($this->returnValue($curlResult));
+        $curl->setDebug(true);
         $this->assertEquals($purchaseId, $curl->purchase($purchase));
     }
 
@@ -142,6 +143,7 @@ class Kuapay_Adapter_CurlTest extends PHPUnit_Framework_TestCase {
                 $this->equalTo(Kuapay_Adapter_Curl::GET),
                 $this->equalTo(array()))
             ->will($this->returnValue($curlResult));
+        $curl->setDebug(true);
         $this->assertEquals(json_decode($curlResult), $curl->status($purchaseId));
     }
 
@@ -179,9 +181,6 @@ class Kuapay_Adapter_CurlTest extends PHPUnit_Framework_TestCase {
             array('{"_id', 'Kuapay_Exception_InvalidAPIResponse'), // partial data
             array('{}', 'Kuapay_Exception_InvalidAPIResponse'), // empty json object as response
             // array('{"value":{}}', 'Kuapay_Exception_InvalidAPIResponse'), // empty value is ok, code zero is assumed
-            array('{"value":{"status_code":-1,"status":"Invalid QR Code"}}', 'Kuapay_Exception_InvalidQRCode'), // error with identificator code
-            array('{"value":{"status_code":-2,"status":"Invalid Credentials"}}', 'Kuapay_Exception_InvalidCredentials'), // error with login credentials
-            array('{"value":{"status_code":-3,"status":"Transaction Not Authorized"}}', 'Kuapay_Exception_TransactionNotAuthorized') // error authorization
         );
     }
 }

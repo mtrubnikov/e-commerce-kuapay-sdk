@@ -13,7 +13,7 @@ class Kuapay_Client {
             if (!method_exists($this, $method)) {
                 require_once 'Kuapay/Exception/Runtime.php';
                 throw new Kuapay_Exception_Runtime(sprintf(
-                	'Method %s::%s does not exist', get_class(), $method
+                    'Method %s::%s does not exist', get_class(), $method
                 ));
             }
 

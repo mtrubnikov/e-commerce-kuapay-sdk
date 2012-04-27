@@ -11,14 +11,14 @@ class Kuapay_Bill {
 
     private function setOptions(array $options = array()) {
         foreach ($options as $name => $value) {
-        $method = 'set' . ucfirst($name);
+            $method = 'set' . ucfirst($name);
 
-        if (!method_exists($this, $method)) {
-            require_once 'Kuapay/Exception/Runtime.php';
-            throw new Kuapay_Exception_Runtime(sprintf(
-        		'Method %s::%s does not exist', get_class(), $method
-            ));
-        }
+            if (!method_exists($this, $method)) {
+                require_once 'Kuapay/Exception/Runtime.php';
+                throw new Kuapay_Exception_Runtime(sprintf(
+                    'Method %s::%s does not exist', get_class(), $method
+                ));
+            }
 
             $this->$method($value);
         }
@@ -65,9 +65,8 @@ class Kuapay_Bill {
     }
 
     public function isValid() {
-        return ($this->getDetails() instanceof Kuapay_BillDetails)
-            && $this->getTotal() > 0
-            && ($this->getSubtotal() + $this->getTax() == $this->getTotal());
+        return (($this->getDetails() instanceof Kuapay_BillDetails)
+            && $this->getTotal() >= 0);
     }
 
     public function toArray() {

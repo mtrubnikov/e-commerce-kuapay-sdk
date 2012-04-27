@@ -4,15 +4,15 @@ require_once 'Kuapay/Adapter.php';
 class Kuapay_Adapter_Curl implements Kuapay_Adapter {
     const API_URL           = 'https://www.kuapay.com/api/';
     const PURCHASE_RESOURCE = 'purchase/';
-	const NEW_ACTION        = 'new';
+    const NEW_ACTION        = 'new';
 
-	const GET     = 'GET';
+    const GET     = 'GET';
     const POST    = 'POST';
     const TIMEOUT = 25;
 
     private static $defaultHeaders = array(
-    	'Connection: Keep-Alive',
-    	'Content-type: application/x-www-form-urlencoded;charset=UTF-8'
+        'Connection: Keep-Alive',
+        'Content-type: application/x-www-form-urlencoded;charset=UTF-8'
     );
 
     private $handle;
@@ -33,7 +33,7 @@ class Kuapay_Adapter_Curl implements Kuapay_Adapter {
             if (!method_exists($this, $method)) {
                 require_once 'Kuapay/Exception/Runtime.php';
                 throw new Kuapay_Exception_Runtime(sprintf(
-                	'Method %s::%s does not exist', get_class(), $method
+                    'Method %s::%s does not exist', get_class(), $method
                 ));
             }
 
@@ -167,26 +167,30 @@ class Kuapay_Adapter_Curl implements Kuapay_Adapter {
 
         $result = $this->post($this->getApiUrl() . self::PURCHASE_RESOURCE . self::NEW_ACTION, $purchase->toArray());
 
-		$resultParts = preg_split("~\n\r\n~", $result);
+        if ($this->isDebug()) {
+            $this->getLogger()->log('Retrieved result: ' . $result);
+        }
 
-		if (!isset($resultParts[1])) {
+        $resultParts = preg_split("~\n\r\n~", $result);
+
+        if (!isset($resultParts[1])) {
             require_once 'Kuapay/Exception/InvalidAPIResponse.php';
             throw new Kuapay_Exception_InvalidAPIResponse('Purchase reponse is missing purchase ID');
-		}
+        }
 
-		$resultDecoded = json_decode($resultParts[1]);
+        $resultDecoded = json_decode($resultParts[1]);
 
-		if (!is_object($resultDecoded)) {
-		    require_once 'Kuapay/Exception/InvalidAPIResponse.php';
-		    throw new Kuapay_Exception_InvalidAPIResponse((string) $resultParts[1]);
-		}
+        if (!is_object($resultDecoded)) {
+            require_once 'Kuapay/Exception/InvalidAPIResponse.php';
+            throw new Kuapay_Exception_InvalidAPIResponse((string) $resultParts[1]);
+        }
 
-		if (!isset($resultDecoded->purchase_id) || empty($resultDecoded->purchase_id)) {
-		    require_once 'Kuapay/Exception/InvalidAPIResponse.php';
-		    throw new Kuapay_Exception_InvalidAPIResponse('Parsed purchase reponse is missing purchase ID');
-		}
+        if (!isset($resultDecoded->purchase_id) || empty($resultDecoded->purchase_id)) {
+            require_once 'Kuapay/Exception/InvalidAPIResponse.php';
+            throw new Kuapay_Exception_InvalidAPIResponse('Parsed purchase reponse is missing purchase ID');
+        }
 
-		return $resultDecoded->purchase_id;
+        return $resultDecoded->purchase_id;
     }
 
     public function status($purchaseId) {
@@ -200,35 +204,18 @@ class Kuapay_Adapter_Curl implements Kuapay_Adapter {
 
         if (!is_object($resultDecoded)) {
             require_once 'Kuapay/Exception/InvalidAPIResponse.php';
-		    throw new Kuapay_Exception_InvalidAPIResponse('Status reponse can not be parsed');
-		}
+            throw new Kuapay_Exception_InvalidAPIResponse('Status response can not be parsed');
+        }
 
-		if (!isset($resultDecoded->value)) {
-		    require_once 'Kuapay/Exception/InvalidAPIResponse.php';
-		    throw new Kuapay_Exception_InvalidAPIResponse('Parsed purchase reponse is missing status code');
-		}
+        if (!isset($resultDecoded->value)) {
+            require_once 'Kuapay/Exception/InvalidAPIResponse.php';
+            throw new Kuapay_Exception_InvalidAPIResponse('Parsed purchase reponse is missing status code');
+        }
 
-		if (!isset($resultDecoded->value->status_code)) {
-		    $resultDecoded->value->status_code = 0;
-		}
+        if (!isset($resultDecoded->value->status_code)) {
+            $resultDecoded->value->status_code = 0;
+        }
 
-		if ($resultDecoded->value->status_code < 0) {
-            switch ($resultDecoded->value->status_code) {
-                case -1:
-                    require_once 'Kuapay/Exception/InvalidQRCode.php';
-                    throw new Kuapay_Exception_InvalidQRCode($resultDecoded->value->status);
-                    break;
-                case -2:
-                    require_once 'Kuapay/Exception/InvalidCredentials.php';
-                    throw new Kuapay_Exception_InvalidCredentials($resultDecoded->value->status);
-                    break;
-                case -3:
-                    require_once 'Kuapay/Exception/TransactionNotAuthorized.php';
-                    throw new Kuapay_Exception_TransactionNotAuthorized($resultDecoded->value->status);
-                    break;
-            }
-		}
-
-		return $resultDecoded;
+        return $resultDecoded;
     }
 }
