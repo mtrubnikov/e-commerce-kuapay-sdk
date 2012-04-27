@@ -1,0 +1,8 @@
+{
+    "default_qr_code":"Enter your Kuapay barcode number",
+    "status_n1_msg":"Billing failed. This may be due to an invalid barcode or connection timeout. Please try again.",
+    "status_n2_msg":"Oops..! This merchant has not installed Kuapay correctly. Please contact the merchant for more information.",
+    "status_n3_msg":"Transaction Cancelled",
+    "invalid_qr_code":"Please enter a valid barcode number",
+    "connection_error":"Connection Error"
+}

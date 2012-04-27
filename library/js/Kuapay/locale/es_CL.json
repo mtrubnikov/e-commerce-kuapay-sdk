@@ -1,0 +1,8 @@
+{
+    "default_qr_code":"Introduce el número que aparece debajo del código de barras en  Kuapay.",
+    "status_n1_msg":"Error enviando la factura. Esto puede ser debido a un código no valido o a una desconexion. Por favor, intentalo de nuevo.",
+    "status_n2_msg":"Oops..! Esta tienda no tiene Kuapay instalado correctamente. Por favor contacta con la tienda para mas información. ",
+    "status_n3_msg":"Transacción cancelada.",
+    "invalid_qr_code":"Por favor, introduce un código de barras valido.",
+    "connection_error":"Error en la conexión."
+}
